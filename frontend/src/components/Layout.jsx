@@ -65,12 +65,12 @@ export default function Layout({ currentPage, setCurrentPage, children }) {
             <Menu size={20} />
           </button>
           <div>
-            <p className="eyebrow">Professional retail automation website</p>
+            <p className="eyebrow">Free local retail automation workspace</p>
             <h2>{navItems.find((item) => item.id === currentPage)?.label}</h2>
           </div>
           <div className="topbar-status">
-            <span>Live demo</span>
-            <strong>AI automation on</strong>
+            <span>Local demo mode</span>
+            <strong>No paid API required</strong>
           </div>
         </header>
         {children}

@@ -27,7 +27,19 @@ export default function Dashboard() {
   }, []);
 
   if (error) {
-    return <EmptyState title="Backend not reachable" message={error} />;
+    return (
+      <EmptyState
+        title="Backend not reachable"
+        message={`${error}. Keep the starter Terminal open, then refresh this page.`}
+      >
+        <div className="help-card">
+          <strong>Quick fix</strong>
+          <code>cd /Users/rohitagarwal/Desktop</code>
+          <code>./Start_Vyapaar.command</code>
+          <span>Open http://127.0.0.1:5180 after the backend says ready.</span>
+        </div>
+      </EmptyState>
+    );
   }
 
   if (!summary) {

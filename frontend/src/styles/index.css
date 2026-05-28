@@ -19,9 +19,16 @@
   box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
 body {
   margin: 0;
   min-width: 320px;
+  overflow-x: hidden;
   background:
     linear-gradient(180deg, rgba(15, 118, 110, 0.08), transparent 260px),
     #f4f7fb;
@@ -41,7 +48,9 @@ button {
 .app-shell {
   display: grid;
   grid-template-columns: 280px minmax(0, 1fr);
+  width: 100%;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .sidebar {
@@ -127,12 +136,16 @@ button {
 
 .main-content {
   padding: 24px;
+  width: 100%;
   min-width: 0;
+  max-width: 1540px;
+  margin: 0 auto;
 }
 
 .topbar {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 16px;
   margin-bottom: 24px;
 }
@@ -168,11 +181,12 @@ button {
 .page-grid {
   display: grid;
   gap: 20px;
+  min-width: 0;
 }
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
 }
 
@@ -353,12 +367,12 @@ button {
 
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 14px;
 }
 
 .form-grid.compact {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 label {
@@ -373,6 +387,7 @@ input,
 select,
 textarea {
   width: 100%;
+  min-width: 0;
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 10px 12px;
@@ -424,6 +439,7 @@ textarea {
 .table-wrap {
   width: 100%;
   overflow-x: auto;
+  border-radius: 8px;
 }
 
 table {
@@ -439,6 +455,7 @@ td {
   text-align: left;
   vertical-align: top;
   font-size: 14px;
+  overflow-wrap: anywhere;
 }
 
 th {
@@ -494,6 +511,27 @@ th {
   color: var(--muted);
 }
 
+.help-card {
+  display: grid;
+  gap: 8px;
+  max-width: 680px;
+  border: 1px solid #cfe1df;
+  border-radius: 8px;
+  padding: 14px;
+  background: #ffffff;
+}
+
+.help-card code {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 6px;
+  background: #101827;
+  color: #d1fae5;
+  padding: 9px 10px;
+  font-size: 13px;
+}
+
 .assistant-box {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -539,19 +577,23 @@ th {
 
 .credit-controls {
   display: grid;
-  grid-template-columns: minmax(260px, 1fr) 240px 180px;
+  grid-template-columns: minmax(260px, 1fr) minmax(190px, 240px) minmax(160px, 190px);
   gap: 14px;
   align-items: end;
+  min-width: 0;
 }
 
 .credit-board {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
   gap: 20px;
   align-items: start;
+  min-width: 0;
 }
 
 .customer-credit-column {
+  min-width: 0;
+  overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 8px;
   background: #ffffff;
@@ -564,6 +606,7 @@ th {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 12px;
 }
 
@@ -594,7 +637,7 @@ th {
 .ledger-metrics,
 .credit-amount-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(112px, 1fr));
   gap: 0 14px;
 }
 
@@ -619,6 +662,7 @@ th {
   color: var(--ink);
   font-size: 15px;
   line-height: 1.25;
+  overflow-wrap: anywhere;
 }
 
 .customer-note {
@@ -656,6 +700,7 @@ th {
   display: block;
   margin-bottom: 4px;
   line-height: 1.35;
+  overflow-wrap: anywhere;
 }
 
 .mini-actions {
@@ -680,7 +725,7 @@ th {
 
 .payment-recorder {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 10px;
   padding: 12px;
   border: 1px solid #edf1f5;
@@ -699,12 +744,13 @@ th {
 
 .payment-row {
   display: grid;
-  grid-template-columns: 98px 90px 62px minmax(0, 1fr);
+  grid-template-columns: 108px 100px 70px minmax(0, 1fr);
   gap: 8px;
   align-items: center;
   min-height: 34px;
   border-bottom: 1px solid #edf1f5;
   font-size: 13px;
+  overflow-wrap: anywhere;
 }
 
 .payment-row em {

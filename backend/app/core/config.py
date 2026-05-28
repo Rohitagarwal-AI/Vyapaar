@@ -8,7 +8,10 @@ class Settings(BaseSettings):
     api_prefix: str = "/api"
     database_url: str = "sqlite:///./vyapaarai.db"
 
-    cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173"
+    cors_origins: str = (
+        "http://localhost:5173,http://127.0.0.1:5173,"
+        "http://localhost:5180,http://127.0.0.1:5180"
+    )
 
     ai_provider: str = "local"
     openai_api_key: str = ""
