@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import {
   BarChart3,
   Bell,
@@ -66,6 +66,9 @@ export default function Layout({
   children: ReactNode;
 }) {
   const meta = pageMeta[activePage];
+  const [notificationsOpen, setNotificationsOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
+  const [search, setSearch] = useState('');
 
   return (
     <div className="app-shell">
@@ -110,16 +113,31 @@ export default function Layout({
           <button className="menu-button" onClick={() => setMobileOpen(true)} aria-label="Open navigation"><Menu size={21} /></button>
           <div className="top-search">
             <Search size={17} />
-            <input placeholder="Search products, customers or invoice no." />
+            <input
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' && search.trim()) {
+                  onNavigate('inventory');
+                  setNotificationsOpen(false);
+                  setProfileOpen(false);
+                }
+              }}
+              placeholder="Search products, customers or invoice no."
+            />
             <kbd>⌘ K</kbd>
           </div>
           <div className="top-actions">
-            <button className="icon-button notification-button" aria-label="Notifications"><Bell size={18} /><i /></button>
-            <div className="profile-chip">
+            <div className="top-popover-wrap">
+              <button className="icon-button notification-button" onClick={() => { setNotificationsOpen(!notificationsOpen); setProfileOpen(false); }} aria-label="Notifications"><Bell size={18} /><i /></button>
+              {notificationsOpen && <div className="top-popover notification-popover"><strong>Notifications</strong><span>3 low-stock products need attention.</span><span>1 customer payment is overdue.</span><button onClick={() => { onNavigate('payments'); setNotificationsOpen(false); }}>Review payment alerts</button></div>}
+            </div>
+            <button className="profile-chip" onClick={() => { setProfileOpen(!profileOpen); setNotificationsOpen(false); }} aria-label="Profile menu">
               <div>MA</div>
               <span><strong>{shop.ownerName}</strong><small>Administrator</small></span>
               <ChevronDown size={14} />
-            </div>
+            </button>
+            {profileOpen && <div className="top-popover profile-popover"><strong>{shop.ownerName}</strong><span>{shop.phone}</span><button onClick={() => { onNavigate('settings'); setProfileOpen(false); }}>Open business settings</button></div>}
           </div>
         </header>
 

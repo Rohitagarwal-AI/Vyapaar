@@ -59,16 +59,22 @@ h1, h2, h3 { font-family: Manrope, sans-serif; }
 .top-search svg { color: #98a2b3; }
 .top-search input { background: transparent; border: 0; color: var(--ink); font-size: 12px; outline: none; width: 100%; }
 .top-search kbd { background: white; border: 1px solid #e4e7ec; border-radius: 4px; color: #98a2b3; font-size: 10px; padding: 2px 4px; white-space: nowrap; }
-.top-actions { align-items: center; display: flex; gap: 15px; }
+.top-actions { align-items: center; display: flex; gap: 15px; position: relative; }
+.top-popover-wrap { position: relative; }
 .icon-button { align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 8px; color: #667085; display: flex; height: 34px; justify-content: center; width: 34px; }
 .notification-button { position: relative; }
 .notification-button i { background: #ef5f5f; border: 2px solid white; border-radius: 50%; height: 8px; position: absolute; right: 5px; top: 5px; width: 8px; }
-.profile-chip { align-items: center; display: flex; gap: 8px; }
+.profile-chip { align-items: center; background: transparent; border: 0; display: flex; gap: 8px; padding: 0; }
 .profile-chip > div { align-items: center; background: #e8e9ff; border-radius: 50%; color: #534ec0; display: flex; font-size: 10px; font-weight: 800; height: 34px; justify-content: center; width: 34px; }
 .profile-chip strong, .profile-chip small { display: block; }
 .profile-chip strong { color: #344054; font-size: 12px; }
 .profile-chip small { color: #98a2b3; font-size: 10px; margin-top: 2px; }
 .profile-chip svg { color: #98a2b3; }
+.top-popover { background: white; border: 1px solid #e5e8ee; border-radius: 9px; box-shadow: 0 15px 32px #1118271c; display: flex; flex-direction: column; gap: 7px; padding: 11px; position: absolute; right: 0; top: 45px; width: 218px; z-index: 30; }
+.top-popover strong { color: #3e495b; font-size: 11px; }
+.top-popover span { color: #8d97a7; font-size: 10px; line-height: 1.4; }
+.top-popover button { background: #f1f0ff; border: 0; border-radius: 6px; color: #5a54bd; font-size: 10px; font-weight: 700; margin-top: 3px; padding: 7px; text-align: left; }
+.profile-popover { right: 0; top: 48px; }
 
 .main-content { margin: 0 auto; max-width: 1600px; padding: 26px 32px 52px; }
 .page-heading { align-items: center; display: flex; justify-content: space-between; margin-bottom: 19px; }
