@@ -1,2 +1,0 @@
-"""Vyapaar backend package."""
-

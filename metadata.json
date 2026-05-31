@@ -1,0 +1,6 @@
+{
+  "name": "Vyapaar Business Suite",
+  "description": "Comprehensive GST billing, inventory tracking, financial ledger (Udhaar Book), and Gemini AI business coach for small businesses.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
